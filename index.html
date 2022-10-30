@@ -2,9 +2,78 @@
     <head>
         <title>COLOR SPACE</title>
         <link rel='icon' type='image/x-icon' href='./imgs/colspace.ico'>
+        <link rel='stylesheet' href='./code/style.css'>
         <script type='text/javascript' src='./code/code.js'></script>
         <script type='text/javascript' src='./code/colorspace.js'></script>
     </head>
     <body onload='page_load()'>
+        <table>
+            <tr>
+                <td colspan='9' align='center'><h2>COLOR SPACE CONVERTER</h2></td>
+            </tr>
+            <tr>
+                <td><input type='radio' class='rd_space' value='selector' checked></td>
+                <td><b>Color:</b></td>
+                <td colspan='7'><input type='color' id='cl_selector' value='#0080ff' disabled></td>
+            </tr>
+            <tr>
+                <td><input type='radio' class='rd_space' value='hexcode'></td>
+                <td><b>Hexcode:</b></td>
+                <td align='right'>#</td>
+                <td colspan='6'><input type='text' id='tx_hexcode' maxlength='6' value='0080ff'></td>
+            </tr>
+            <tr>
+                <td><input type='radio' class='rd_space' value='rgb'></td>
+                <td><b>RGB:</b></td>
+                <td><b>R</b>ed:</td>
+                <td><input type='number' class='nb_rgb' value='0' min='0' max='255'></td>
+                <td><b>G</b>reen:</td>
+                <td><input type='number' class='nb_rgb' value='128' min='0' max='255'></td>
+                <td><b>B</b>lue:</td>
+                <td><input type='number' class='nb_rgb' value='255' min='0' max='255'></td>
+            </tr>
+            <tr>
+                <td><input type='radio' class='rd_space' value='hsl'></td>
+                <td><b>HSL:</b></td>
+                <td><b>H</b>ue:</td>
+                <td><input type='number' class='nb_hsl' value='0' min='0' max='1'></td>
+                <td><b>S</b>aturate:</td>
+                <td><input type='number' class='nb_hsl' value='1' min='0' max='1'></td>
+                <td><b>L</b>uminate:</td>
+                <td><input type='number' class='nb_hsl' value='0.5' min='0' max='1'></td>
+            </tr>
+            <tr>
+                <td><input type='radio' class='rd_space' value='hsv'></td>
+                <td><b>HSV:</b></td>
+                <td><b>H</b>ue:</td>
+                <td><input type='number' class='nb_hsv' value='0' min='0' max='1'></td>
+                <td><b>S</b>aturate:</td>
+                <td><input type='number' class='nb_hsv' value='1' min='0' max='1'></td>
+                <td><b>V</b>alue:</td>
+                <td><input type='number' class='nb_hsv' value='0.5' min='0' max='1'></td>
+            </tr>
+            <tr>
+                <td><input type='radio' class='rd_space' value='hsi'></td>
+                <td><b>HSI:</b></td>
+                <td><b>H</b>ue:</td>
+                <td><input type='number' class='nb_hsi' value='0' min='0' max='1'></td>
+                <td><b>S</b>aturate:</td>
+                <td><input type='number' class='nb_hsi' value='1' min='0' max='1'></td>
+                <td><b>I</b>ntensity:</td>
+                <td><input type='number' class='nb_hsi' value='0.5' min='0' max='1'></td>
+            </tr>
+            <tr>
+                <td><input type='radio' class='rd_space' value='cmyk'></td>
+                <td><b>CMYK:</b></td>
+                <td><b>C</b>yan:</td>
+                <td><input type='number' class='nb_cmyk' value='0' min='0' max='1'></td>
+                <td><b>M</b>agenta:</td>
+                <td><input type='number' class='nb_cmyk' value='1' min='0' max='1'></td>
+                <td><b>Y</b>ellow:</td>
+                <td><input type='number' class='nb_cmyk' value='0.5' min='0' max='1'></td>
+                <td>Blac<b>K</b>:</td>
+                <td><input type='number' class='nb_cmyk' value='0.5' min='0' max='1'></td>
+            </tr>
+        </table>
     </body>
 </html>
