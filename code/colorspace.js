@@ -448,9 +448,14 @@ const toCMYK = _rgb => {
     var gn = _rgb.Green/255;
     var be = _rgb.Blue/255;
     var bl = 1.0 - Math.max(rd, gn, be);
-    var cy = (1.0 - rd - bl)/(1.0 - bl);
-    var ma = (1.0 - gn - bl)/(1.0 - bl);
-    var ye = (1.0 - be - bl)/(1.0 - bl);
+    if(bl!=1) {
+        var cy = (1.0 - rd - bl)/(1.0 - bl);
+        var ma = (1.0 - gn - bl)/(1.0 - bl);
+        var ye = (1.0 - be - bl)/(1.0 - bl);
+    }
+    else {
+        var cy = 0; var ma = 0; var ye = 0;
+    }
     return new CMYK(cy, ma, ye, bl);
 }
 const fromCMYK = _cmyk => {
