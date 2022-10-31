@@ -1,3 +1,28 @@
 #cl_selector {
     width: 100%;
 }
+table {
+    user-select: none;
+    font-size: 150%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+[class*='nb_'] {
+    text-align: center;
+    width: 100%;
+}
+.colVal {
+    font-size: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.colVal:enabled {
+    background: white;
+    border: 1px dashed gray;
+    color: black;
+    font-style: normal;
+}
+.colVal:disabled {
+    background: white;
+    border: 0px white;
+    color: gray;
+    font-style: italic;
+}

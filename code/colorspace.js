@@ -32,6 +32,9 @@ class RGB {
     toCMYK() {
         return toCMYK(this);
     }
+    item(_index) {
+        return (_index==0)?this.Red:((_index==1)?this.Green:((_index==2)?this.Blue:NaN));
+    }
 }
 // 2.Hexcode
 class Hexcode {
@@ -126,6 +129,9 @@ class HSL {
     }
     toCMYK() {
         return toCMYK(this.toRGB());
+    }
+    item(_index) {
+        return (_index==0)?this.Hue:((_index==1)?this.Saturate:((_index==2)?this.Luminate:NaN));
     }
 }
 const toHSL = _rgb => {
@@ -225,6 +231,9 @@ class HSV {
     }
     toCMYK() {
         return toCMYK(this.toRGB());
+    }
+    item(_index) {
+        return (_index==0)?this.Hue:((_index==1)?this.Saturate:((_index==2)?this.Value:NaN));
     }
 }
 const toHSV = _rgb => {
@@ -331,6 +340,9 @@ class HSI {
     toCMYK() {
         return toCMYK(this.toRGB());
     }
+    item(_index) {
+        return (_index==0)?this.Hue:((_index==1)?this.Saturate:((_index==2)?this.Intensity:NaN));
+    }
 }
 const toHSI = _rgb => {
     var _r = _rgb.Red;
@@ -426,6 +438,9 @@ class CMYK {
     }
     toHSI() {
         return toHSI(this.toRGB());
+    }
+    item(_index) {
+        return (_index==0)?this.Cyan:((_index==1)?this.Magenta:((_index==2)?this.Yellow:((_index==3)?this.Key:NaN)));
     }
 }
 const toCMYK = _rgb => {
