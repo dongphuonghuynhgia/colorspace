@@ -31,6 +31,11 @@ const radio_change = () => {
         }
     }
 }
+const lb_space_click = sender => {
+    var rd_spaces = document.getElementsByClassName('rd_space');
+    rd_spaces[sender].checked = true;
+    radio_change();
+}
 const roundTo = (number, digit) => {
     return (isNaN(new Number(number)))?NaN:(Math.round(number * Math.pow(10, digit)) / Math.pow(10, digit));
 }
@@ -61,10 +66,11 @@ const hexcode_focus = () => {
 const hexcode_blur = () => {
     var hexCode = document.getElementById('tx_hexcode').value;
     if(hexCode == '') {
-        document.getElementById('tx_hexcode').value = hexcode_def;
         hexCode = hexcode_def;
     }
     loadFromHex(hexCode);
+    var hex = new Hexcode(hexCode);
+    document.getElementById('tx_hexcode').value = hex.toString();
 }
 const hexcode_keyup = () => {
     var hexCode = document.getElementById('tx_hexcode').value;
@@ -94,5 +100,60 @@ const loadFromHex = _hex => {
                 ctrls[j].value = roundTo(ctrlCode.item(j), 3);
             }
         }
+    }
+}
+const number_change = () => {
+    var cols = document.getElementsByClassName('nb_' + radioIndex.toString());
+    if(cols.length>4 || cols.length<3) alert('Error when select color space!');
+    else {
+        for(i=0;i<cols.length;i++) {
+            var cVal = cols[i].value;
+            if(isNaN(parseFloat(cVal))) cols[i].value = 0;
+            else {
+                if(radioIndex==2) {
+                    if(cVal<0) cols[i].value = 0;
+                    if(cVal>255) cols[i].value = 255;
+                }
+                else {
+                    if(cVal<0) cols[i].value = 0;
+                    if(cVal>1) cols[i].value = 1;
+                }
+            }
+        }
+        var colorPt;
+        switch (radioIndex) {
+            case 2:
+                colorPt = new RGB(cols[0].value, cols[1].value, cols[2].value);
+                break;
+            case 3:
+                colorPt = new HSL(cols[0].value, cols[1].value, cols[2].value);
+                break;
+            case 4:
+                colorPt = new HSV(cols[0].value, cols[1].value, cols[2].value);
+                break;
+            case 5:
+                colorPt = new HSI(cols[0].value, cols[1].value, cols[2].value);
+                break;
+            case 6:
+                colorPt = new CMYK(cols[0].value, cols[1].value, cols[2].value, cols[3].value);
+                break;
+            default:
+                alert('Error when select color space!');
+        }
+        for(i=2;i<7;i++) {
+            if(i==radioIndex) break;
+            var ctrls = document.getElementsByClassName('nb_' + i.toString());
+            var ctrlCode;
+            if(i==2) ctrlCode = colorPt.toRGB();
+            else if(i==3) ctrlCode = colorPt.toHSL();
+            else if(i==4) ctrlCode = colorPt.toHSV();
+            else if(i==5) ctrlCode = colorPt.toHSI();
+            else  ctrlCode = colorPt.toCMYK();
+            for(j=0;j<ctrls.length;j++) {
+                ctrls[j].value = roundTo(ctrlCode.item(j), 3);
+            }
+        }
+        document.getElementById('tx_hexcode').value = colorPt.toHexcode();
+        document.getElementById('cl_selector').value = '#' + colorPt.toHexcode();
     }
 }
