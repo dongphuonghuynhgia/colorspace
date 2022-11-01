@@ -1,3 +1,4 @@
+// ===== COLOR SPACE ALL CLASSES =====
 // 1.RGB Color space
 class RGB {
     constructor(_red, _green, _blue) {
