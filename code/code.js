@@ -68,6 +68,7 @@ const hexcode_blur = () => {
     if(hexCode == '') {
         hexCode = hexcode_def;
     }
+    hexCode = trueHexcode(hexCode);
     loadFromHex(hexCode);
     var hex = new Hexcode(hexCode);
     document.getElementById('tx_hexcode').value = hex.toString();
